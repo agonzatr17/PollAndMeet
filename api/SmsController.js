@@ -28,15 +28,3 @@ module.exports = {
         response.status(204).send();
     }
 }
-
-// current example:
-/*{
-  msisdn: 'phone number of the sender',
-  to: 'phone number of the receiver',
-  messageId: '16000002B61107EC',
-  text: 'Join me test',
-  type: 'text',
-  keyword: 'JOIN',
-  'api-key': 'the api-key',
-  'message-timestamp': '2020-06-22 21:54:58'
-}*/

@@ -8,12 +8,14 @@ const nexmo = new Nexmo({
   privateKey: './private.key'
 });
 
+const appendedTtsMessage = "Press <break time='0.3s' /><prosody volume='loud'>1</prosody><break time='0.3s' /> to Confirm you can join me, or Press <break time='0.3s' /><prosody volume='loud'>2</prosody><break time='0.3s' /> if you cannot join me";
+
 exports.sendTts = function(to, message) {
     var ncco = [
         {
           action: 'talk',
           voiceName: 'Joey',
-          text: `<speak><break time='0.75s' />${message}</speak>`,
+          text: `<speak><break time='0.75s' /> ${message} <break strength='strong' /> ${appendedTtsMessage}</speak>`,
         },
     ];
 
