@@ -17,6 +17,7 @@ exports.sendTts = function(to, message) {
         },
     ];
 
+    console.log(`Sending text-to-speech message to ${to}...`);
     nexmo.calls.create(
         {
           to: [{ type: 'phone', number: to }],
