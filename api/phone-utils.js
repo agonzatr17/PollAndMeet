@@ -11,6 +11,12 @@ exports.displayInboundSms = function(params) {
     console.log("--------------------");
 }
 
+exports.displayInboundDtmf = function(params) {
+    console.log('Inbound DTMF:');
+    console.log(params);
+    console.log("--------------------");
+}
+
 exports.isOriginalPhoneNumber = function(number) {
     return number == ORIGINAL_NUMBER;
 }
