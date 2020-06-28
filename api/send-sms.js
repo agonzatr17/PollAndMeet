@@ -2,8 +2,8 @@ const Nexmo = require('nexmo');
 const { API_KEY, API_SECRET, NEXMO_NUMBER, ORIGINAL_NUMBER } = require('../config/config');
  
 const nexmo = new Nexmo({
-  apiKey: API_KEY,
-  apiSecret: API_SECRET
+    apiKey: API_KEY,
+    apiSecret: API_SECRET
 });
 
 const appendedMessage = "Please respond with Yes or No if you can join me!";

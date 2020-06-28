@@ -9,5 +9,5 @@ require('./config/config');
 require('./config/routes')(app);
 
 const server = app.listen(process.env.PORT || 3000, () => {
-  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
+    console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
