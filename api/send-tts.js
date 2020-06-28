@@ -16,7 +16,8 @@ exports.sendTts = function(to, message, responseWebhook) {
         {
             action: 'talk',
             voiceName: 'Joey',
-            text: `<speak><break time='0.75s' /> ${message} <break strength='strong' /> ${appendedTtsMessage}</speak>`
+            text: `<speak><break time='0.75s' /> ${message} <break strength='strong' /> ${appendedTtsMessage}</speak>`,
+            bargeIn: true
         },
         {
             action: 'input',
