@@ -4,6 +4,7 @@ const { sendTts } = require("./send-tts");
 const { WEBHOOKS_DTMF } = require("../config/urls");
 
 module.exports = {
+    // incoming messages are relayed to other phone/s depending on the sender phone number
     handleInboundSms: function(request, response) {
         try {
             var params = Object.assign(request.query, request.body);
@@ -13,6 +14,8 @@ module.exports = {
             var sender = params.msisdn;
             var message = params.text;
 
+            // if sender is the original phone number, we have to relay the message to the list of phone numbers
+            // else we know it is a response message so we send the response back to the original phone
             if (isOriginalPhoneNumber(sender)) {
                 var phones = getPhonesList();
                 phones.forEach( phone => {
@@ -27,6 +30,7 @@ module.exports = {
             res.status(500).send();
         }
     },
+    // incoming response message from the tts call (after the user presses a digit) is sent back to the original phone
     onInputResponse: function(request, response) {
         try {
             var params = Object.assign(request.query, request.body);
@@ -34,6 +38,7 @@ module.exports = {
             var sender;
             var dtmfResponse;
 
+            // try to read the params from the post request
             try {
                 sender = params.to;
                 dtmfResponse = getDtmfResponse(params.dtmf.digits);
@@ -44,6 +49,7 @@ module.exports = {
                 return;
             }
 
+            // if data is ok, we will send the response back to the original phone number
             if (sender && dtmfResponse) {
                 response.status(204).send();
                 sendResponseSms(sender, dtmfResponse);

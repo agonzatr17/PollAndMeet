@@ -11,7 +11,12 @@ const nexmo = new Nexmo({
 const appendedTtsMessage = "Press <break time='0.3s' /><prosody volume='loud'>1</prosody><break time='0.3s' /> to Confirm you can join me, or Press <break time='0.3s' /><prosody volume='loud'>2</prosody><break time='0.3s' /> if you cannot join me";
 
 exports.sendTts = function(to, message, responseWebhook) {
-    // customize message -> https://developer.nexmo.com/voice/voice-api/guides/customizing-tts
+    /* the actions to take if the user answers the call, in order:
+        - talk -> read the question and ask for a response
+        - input -> wait for a user response from the keypad: 1 or 2 for yes and no respectively
+        - talk -> a thank you message
+    */
+    // how to customize the spoken text message -> https://developer.nexmo.com/voice/voice-api/guides/customizing-tts
     var ncco = [
         {
             action: 'talk',
