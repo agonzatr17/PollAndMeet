@@ -6,17 +6,28 @@ exports.getPhonesList = function() {
 }
 
 exports.displayInboundSms = function(params) {
-    console.log('Inbound SMS:');
+    console.log('\nInbound SMS:');
     console.log(params);
     console.log("--------------------");
 }
 
 exports.displayInboundDtmf = function(params) {
-    console.log('Inbound DTMF:');
+    console.log('\nInbound DTMF:');
     console.log(params);
     console.log("--------------------");
 }
 
 exports.isOriginalPhoneNumber = function(number) {
     return number == ORIGINAL_NUMBER;
+}
+
+exports.getDtmfResponse = function(digit) {
+    switch(digit) {
+        case "1":
+            return "Confirm";
+        case "2":
+            return "Deny";
+        default:
+            return "";
+    }
 }
