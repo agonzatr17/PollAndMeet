@@ -1,11 +1,11 @@
 const Nexmo = require('nexmo');
-const { API_KEY, API_SECRET, NEXMO_NUMBER, VOICE_API_ID } = require('../config/config');
+const { API_KEY, API_SECRET, NEXMO_NUMBER, VOICE_API_ID, VOICE_API_KEY_PATH } = require('../config/config');
 
 const nexmo = new Nexmo({
     apiKey: API_KEY,
     apiSecret: API_SECRET,
     applicationId: VOICE_API_ID,
-    privateKey: './private.key'
+    privateKey: VOICE_API_KEY_PATH
 });
 
 const appendedTtsMessage = "Press <break time='0.3s' /><prosody volume='loud'>1</prosody><break time='0.3s' /> to Confirm you can join me, or Press <break time='0.3s' /><prosody volume='loud'>2</prosody><break time='0.3s' /> if you cannot join me";
